@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Connect 4 - Nic Enslen</title>
+
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="js/phaser.js"></script>
+	<script src="js/variables.js"></script>
+	<script src="js/bot.js"></script>
+	<script src="js/connect4.js"></script>
+	<script src="js/board.js"></script>
+	<script src="js/controller.js"></script>
+</head>
+<body>
+	<h1>Connect Four</h1>
+
+	<div id="game-canvas"></div>
+
+	<button class="button" id="startButton">New Game</button>
+	<div class="card" id="settingsMenu">
+		<span class="item center">
+			<h1 id="winner"></h1>
+			<img id="thinkingImage" src="images/player1Thinking.gif">
+		</span>
+		<span class="item">
+			Rows: <input type="number" id="numRows" value="6">
+		</span>
+		<span class="item">
+			Columns: <input type="number" id="numCols" value="7">
+		</span>
+		<span class="item">
+			Winning Length:
+			<input type="number" id="winLength" value="4">
+		</span>
+		<span class="item">
+			Red Player:
+			<select id="player1">
+				<option value="0" selected="selected">Human</option>
+				<option value="1">AI: Level 1</option>
+				<option value="2">AI: Level 2</option>
+				<option value="3">AI: Level 3</option>
+				<option value="4">AI: Level 4</option>
+				<option value="5">AI: Level 5</option>
+				<option value="6">AI: Level 6</option>
+				<option value="7">AI: Level 7</option>
+				<option value="8">AI: Level 8</option>
+				<option value="9">AI: Level 9</option>
+				<option value="10">AI: Level 10</option>
+			</select>
+		</span>
+		<span class="item">
+			Blue Player:
+			<select id="player2">
+				<option value="0">Human</option>
+				<option value="1">AI: Level 1</option>
+				<option value="2">AI: Level 2</option>
+				<option value="3">AI: Level 3</option>
+				<option value="4">AI: Level 4</option>
+				<option value="5" selected="selected">AI: Level 5</option>
+				<option value="6">AI: Level 6</option>
+				<option value="7">AI: Level 7</option>
+				<option value="8">AI: Level 8</option>
+				<option value="9">AI: Level 9</option>
+				<option value="10">AI: Level 10</option>
+			</select>
+		</span>
+	</div>
+	
+	<h1 id="winner"></h1>
+	<h1 id="status"></h1>
+
+	
+</body>
+</html>

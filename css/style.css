@@ -1,0 +1,105 @@
+body {
+  background-color: #123;
+  color: #eee;
+  font-size: 110%;
+  font-family: 'Ubuntu', sans-serif;
+  text-align: center; }
+
+h1 {
+  margin-top: 50px; }
+
+canvas {
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid #cacaca;
+  transition: all 0.4s; }
+
+canvas:hover {
+  cursor: pointer; }
+
+select {
+  display: block;
+  padding: 10px 70px 10px 13px !important;
+  max-width: 100%;
+  height: auto !important;
+  border: 1px solid #cacaca;
+  border-radius: 3px;
+  background: url("https://image.ibb.co/iMeAJv/selectbox_arrow.png") right center no-repeat;
+  background-color: #fff;
+  color: #444444;
+  font-size: 1.1em;
+  line-height: 16px !important;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none; }
+
+select option {
+  padding: 5px; }
+
+select::-ms-expand {
+  display: none; }
+
+input[type=number] {
+  display: block;
+  padding: 5px 0px 5px 13px !important;
+  max-width: 100%;
+  height: auto !important;
+  border: 1px solid #cacaca;
+  border-radius: 3px;
+  background-color: #fff;
+  color: #444444;
+  font-size: 1.1em; }
+
+.card {
+  background-color: #f6f6f6;
+  border: 1px solid gainsboro;
+  border-radius: 3px;
+  box-shadow: 0 2px 4px gainsboro;
+  transition: all 0.2s ease-in-out;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 25px;
+  margin-top: 25px;
+  color: #123;
+  text-align: left; }
+  .card .item {
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 20px; }
+  .card .center {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center; }
+
+.button {
+  overflow: hidden;
+  margin-top: 10px;
+  padding: 12px 12px;
+  cursor: pointer;
+  user-select: none;
+  transition: all 150ms linear;
+  text-align: center;
+  white-space: nowrap;
+  text-decoration: none !important;
+  text-transform: none;
+  text-transform: capitalize;
+  color: #111;
+  border: 0 none;
+  border-radius: 4px;
+  font-size: 1.1em;
+  font-weight: 500;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  justify-content: center;
+  align-items: center;
+  flex: 0 0 160px; }
+  .button:hover {
+    transition: all 150ms linear;
+    opacity: .85; }
+  .button:active {
+    transition: all 150ms linear;
+    opacity: .75; }
+
+/*# sourceMappingURL=style.css.map */
