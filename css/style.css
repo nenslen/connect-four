@@ -8,6 +8,10 @@ body {
 h1 {
   margin-top: 50px; }
 
+h2 {
+  margin-top: 50px;
+  text-align: left; }
+
 canvas {
   margin-left: auto;
   margin-right: auto;
@@ -49,6 +53,21 @@ input[type=number] {
   background-color: #fff;
   color: #444444;
   font-size: 1.1em; }
+
+#more {
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 25px;
+  margin-top: 50px;
+  max-width: 800px; }
+  #more p {
+    text-align: left;
+    line-height: 1.6; }
+
+a {
+  color: #7088a0; }
+  a:hover {
+    color: #586e85; }
 
 .card {
   background-color: #f6f6f6;

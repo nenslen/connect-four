@@ -68,9 +68,23 @@
 		</span>
 	</div>
 	
-	<h1 id="winner"></h1>
-	<h1 id="status"></h1>
 
+	<div id="more">
+        <h1>About</h1>
+
+        <p id="description">This project started as an assignment question for a university class. It is the classic game of Connect Four, with an AI opponent
+        that uses some interesting methods to play. Give it a try and see if you can win!</p>
+        
+
+        <h1>Details</h1>
+
+        <h2>How it works</h2>
+        <p>The AI opponent has 10 difficulties (1 - 10). The difficulty is how many moves it is allowed to 'look ahead' while searching for the best move. So if the difficulty is set to 4, the AI will look at all of the possible states the game could be in after 4 more turns have been played. Each possible move that the AI can make is assigned a score, based on how 'good' it thinks that move is. The move with the highest score is the one that the AI will choose. 
+        
+        <p>For source code, visit the <a href="https://github.com/nenslen/Connect4">github page for this project</a>.</p>
+        
+        <canvas id="hiddenCanvas" width="280" height="280" style="display: none"></canvas>
+    </div>
 	
 </body>
 </html>
