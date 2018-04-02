@@ -3,6 +3,7 @@ The classic game of Connect Four with 3 ways of playing
 1) human vs human
 2) human vs AI
 3) AI vs AI
+
 Users can change the number of rows and columns, as well as the number of tiles in a row needed to win. This makes for some unique gameplay not seen in the traditional game with 6 rows and 7 columns.
 
 ## Demo
