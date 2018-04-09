@@ -20,12 +20,22 @@ The focus of this project was to use [alpha-beta pruning](https://en.wikipedia.o
 
 ## AI Details
 ### Computing moves
-To compute a move, the AI uses the [alpha-beta pruning search algorithm](https://en.wikipedia.org/wiki/Alpha%E2%80%93beta_pruning) up to a maximum depth specified by the difficulty of the AI player. Each state in the search space has the following characteristics:
-- Action: What action was performed to get to this state (ie. what column was a piece dropped into)
+To compute a move, the AI uses the [alpha-beta pruning search algorithm](https://en.wikipedia.org/wiki/Alpha%E2%80%93beta_pruning) up to a maximum depth equal to the AI's level of difficulty. The red and blue players represent the max and min players, respectively. Each state in the search space has the following characteristics:
+- Action: What action was performed to get to this state (ie. what column the piece was dropped into)
 - Board: The game board at this particular state (ie. The arrangement of the player pieces in the Connect Four grid)
 - Score: The score of this state, based on a heuristic (explained in the next section)
 - Depth: How deep this state is in the search
 The move that results in the best score for the current player is the chosen move.
 
 ### Scoring Heuristic
-This is
+The score of a state is assigned based on how good the state's board is for each player. How good a state is for a particular player depends on how many possible ways they can still win, and how many moves it will take to reach a winning state. The general steps for computing this are:
+1. For each possible line of 4 consecutive tiles on the board:
+   - Count the number of:
+    - Red pieces 
+    - Blue pieces
+    - Empty tiles
+   - Update the score:
+    - If the line is empty or contains both red and blue pieces: Don't update the total score
+    - If the line contains only red or only blue pieces: Calculate a value based on how many pieces are in the line. Then increase/decrease the total score depending on which player's pieces they were.
+    - If the line wins the game for a player, then the total score is becomes either +Infinity or -Infinity, depending on whether red or blue won.
+   
