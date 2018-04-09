@@ -28,14 +28,12 @@ To compute a move, the AI uses the [alpha-beta pruning search algorithm](https:/
 The move that results in the best score for the current player is the chosen move.
 
 ### Scoring Heuristic
-The score of a state is assigned based on how good the state's board is for each player. How good a state is for a particular player depends on how many possible ways they can still win, and how many moves it will take to reach a winning state. The general steps for computing this are:
+The score of a state is assigned based on how good the state's board is for each player. How good a state is for a particular player depends on how many possible ways they can still win, and how many moves it will take to reach a winning state. To compute the score of a state:
 For each possible line of 4 consecutive tiles on the board:
 - Count the number of:
   - Red pieces 
   - Blue pieces
   - Empty tiles
-- Update the score:
-  - If the line is empty or contains both red and blue pieces: Don't update the total score
-  - If the line contains only red or only blue pieces: Calculate a value based on how many pieces are in the line. Then increase/decrease the total score depending on which player's pieces they were.
-  - If the line wins the game for a player, then the total score is becomes either +Infinity or -Infinity, depending on whether red or blue won.
-   
+- If the line is empty or contains both red and blue pieces: Don't change the score
+- If the line contains only red or only blue pieces: Calculate the line's value based on how many pieces are in the line (more pieces = larger value). Then use the line's value to increase/decrease the total score depending on which player's pieces are in the line.
+- If the line wins the game for a player, then the score becomes either +Infinity or -Infinity, depending on whether red or blue won.
