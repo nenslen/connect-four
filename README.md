@@ -24,11 +24,11 @@ To compute a move, the AI uses the [alpha-beta pruning search algorithm](https:/
 - Board: The game board at this particular state (ie. The arrangement of the player pieces in the Connect Four grid)
 - Score: The score of this state, based on a heuristic (explained in the next section)
 - Depth: How deep this state is in the search
+
 The move that results in the best score for the current player is the chosen move.
 
 #### Scoring Heuristic
-The score of a state is assigned based on how good the state's board is for each player. How good a state is for a particular player depends on how many possible ways they can still win, and how many moves it will take to reach a winning state. To compute the score of a state:
-For each possible line of 4 consecutive tiles on the board:
+The score of a state is assigned based on how good the state's board is for each player. How good a state is for a particular player depends on how many possible ways they can still win, and how many moves it will take to reach a winning state. To compute the score of a state, we look at each possible line of 4 consecutive tiles on the board and:
 - Count the number of:
   - Red pieces 
   - Blue pieces
