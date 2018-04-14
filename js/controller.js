@@ -13,7 +13,7 @@ var dropTiles = [];  // Top row above the board. This is where players 'drop' th
 var boardTiles = []; // The connect 4 board
 var currentColumnHover;
 var updateTime = 0;
-var delayTime = 300;
+var delayTime = 500;
 var animationSpeed = 250;
 var tempTile;
 var shownWinner = false;
@@ -117,6 +117,7 @@ function setGameScale() {
 
     // Calculate scaled cell padding
     let windowWidth = $(window).width();
+    let windowHeight = $(window).height();
     if(windowWidth <= 500) { CELL_PADDING = 1; }
     if(windowWidth > 500 && windowWidth <= 800) { CELL_PADDING = 2; }
     if(windowWidth > 800) { CELL_PADDING = 3; }
@@ -124,11 +125,39 @@ function setGameScale() {
 
     // Calculate scaled cell size
     let maxWidth = 1000;
+    let maxHeight = 800;
     let maxCellSize = 64;
-    let viewportWidth = $(window).width() - (2 * parseInt($('.section-wrapper').css('padding-left')));
+    let viewportWidth = windowWidth - (2 * parseInt($('.section-wrapper').css('padding-left')));
+    let viewportHeight = windowHeight - $('.section-header').outerHeight(true) - $('#header').outerHeight(true);
+    
+    // Calculate cell size based on # of columns and screen width
     let newWidth = Math.min(maxWidth, viewportWidth);
-    CELL_SIZE = (newWidth - CELL_PADDING - (COLUMN_COUNT * CELL_PADDING)) / COLUMN_COUNT;
-    CELL_SIZE = Math.min(CELL_SIZE, maxCellSize);
+    let cellSizeW = (newWidth - CELL_PADDING - (COLUMN_COUNT * CELL_PADDING)) / COLUMN_COUNT;
+
+    // Calculate cell size based on # of rows and screen height
+    let newHeight = Math.min(maxHeight, viewportHeight);
+    let cellSizeH = (newHeight - CELL_PADDING - (ROW_COUNT * CELL_PADDING)) / ROW_COUNT;
+
+    CELL_SIZE = Math.min(cellSizeW, cellSizeH, maxCellSize);
+
+    if(CELL_SIZE < 64) {
+        CELL_PADDING = 1;
+    }
+/*
+    console.log("Window Height = " + $(window).height());
+    console.log("Calculated height = " + viewportHeight);
+    console.log($('.section-header:first').outerHeight(true));
+    console.log($('#header').outerHeight());
+    console.log($(".section-header:first").text())
+
+    console.log("maxwidth=" + maxWidth);
+    console.log("viewportWidth=" + viewportWidth);
+    console.log("viewportHeight=" + viewportHeight);
+    let newWidth = Math.min(maxWidth, viewportWidth, viewportHeight);
+    console.log("newwidth=" + newWidth)
+*/  
+    //CELL_SIZE = (newWidth - CELL_PADDING - (COLUMN_COUNT * CELL_PADDING)) / COLUMN_COUNT;
+    //CELL_SIZE = Math.min(CELL_SIZE, maxCellSize);
 
 
     // Scale game area
@@ -219,6 +248,7 @@ function update() {
     if(connect4.gameOver && !shownWinner) {
         showWinner();
         shownWinner = true;
+        console.log(connect4.board.getScore());
     }
 
 
@@ -233,6 +263,7 @@ function update() {
         if(game.time.now > updateTime) {
             currentState = "ready";
             updateGraphics();
+            console.log(connect4.board.getScore());
         } else {
             return;
         }

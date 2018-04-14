@@ -399,7 +399,7 @@ function Board(rows, columns, winLength) {
 	*/
 	this.copy = function() {
 		var newBoard = new Board(this.rows, this.columns, this.winLength);
-
+		
 		for(var i = 0; i < this.rows; i++) {
 			newBoard.tiles[i] = this.tiles[i].slice();
 		}

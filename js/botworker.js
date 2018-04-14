@@ -85,10 +85,54 @@ function alphabeta(state, depth, maxDepth, alpha, beta, maxplayer) {
 
 
                 /**
-                * Update the largest score found among this state's children so far, as well as
-                * update the action that was taken to get that score. If 2 states have the same score,
-                * break the ties by choosing the state with a deeper depth
+                * Find out if this move is the best move we've found so far. We determine this by seeing if any of the
+                * following are true:
+                * - This is the first move we've checked
+                * - The move has a higher score than the current best move
+                * - The move is a winning move. If the current best move is also a winning move, choose the shallowest move
+                * - The move is not a winning move but has the same score as the current best move. Choose the deepest move
                 */
+                var nextScore = nextState.score;
+                var nextDepth = nextState.depth;
+                if(bestAction == -1) {
+                    highestScore = nextScore;
+                    bestAction = i;
+                    deepestDepth = nextDepth;
+                } else if(nextScore >= highestScore) {
+                    if(nextScore == highestScore) {
+                        if(nextScore == Infinity && nextDepth <= deepestDepth || 
+                           nextScore != Infinity && nextDepth > deepestDepth) {
+                                highestScore = nextScore;
+                                bestAction = i;
+                                deepestDepth = nextDepth;
+                            
+                        }
+                    } else {
+                        highestScore = nextScore;
+                        bestAction = i;
+                        deepestDepth = nextDepth;
+                    }
+                }
+                /*
+                var nextScore = nextState.score;
+                var nextDepth = nextState.depth;
+                if(bestAction == -1 || nextScore >= highestScore) {
+                    if(nextScore == highestScore) {
+                        if(nextScore == Infinity && nextDepth < deepestDepth || 
+                           nextScore != Infinity && nextDepth < deepestDepth) {
+                                highestScore = nextScore;
+                                bestAction = i;
+                                deepestDepth = nextDepth;
+                            
+                        }
+                    } else {
+                        highestScore = nextScore;
+                        bestAction = i;
+                        deepestDepth = nextDepth;
+                    }
+                }
+                */
+                /*
                 var score = nextState.score;//board.getScore(1);
                 if(bestAction == -1 || score >= highestScore) {
 
@@ -104,7 +148,7 @@ function alphabeta(state, depth, maxDepth, alpha, beta, maxplayer) {
                     	bestAction = i;
                 	}
                 }
-
+                */
 
                 // Save the largest score found among all states in this entire branch so far
                 alpha = Math.max(alpha, highestScore);
@@ -114,7 +158,7 @@ function alphabeta(state, depth, maxDepth, alpha, beta, maxplayer) {
                 * We can ignore the rest of the successor states in this branch because they will result in worse scores
                 * than if we choose one of the actions in a previous branch
                 */
-                if(beta <= alpha) {
+                if(beta <= alpha && depth != 0) {
                     return new State(bestAction, state.board, highestScore, depth);
                 }
             }
@@ -157,9 +201,53 @@ function alphabeta(state, depth, maxDepth, alpha, beta, maxplayer) {
 
 
                 /**
-                * Update the smallest score found among this state's children so far, as well as
-                * update the action that was taken to get that score
+                * Find out if this move is the best move we've found so far. We determine this by seeing if any of the
+                * following are true:
+                * - This is the first move we've checked
+                * - The move has a lower score than the current best move
+                * - The move is a winning move. If the current best move is also a winning move, choose the shallowest move
+                * - The move is not a winning move but has the same score as the current best move. Choose the deepest move
                 */
+                var nextScore = nextState.score;
+                var nextDepth = nextState.depth;
+                if(bestAction == -1) {
+                    smallestScore = nextScore;
+                    bestAction = i;
+                    deepestDepth = nextDepth;
+                } else if(nextScore <= smallestScore) {
+                    if(nextScore == smallestScore) {
+                        if(nextScore == -Infinity && nextDepth <= deepestDepth || 
+                           nextScore != -Infinity && nextDepth > deepestDepth) {
+                                smallestScore = nextScore;
+                                bestAction = i;
+                                deepestDepth = nextDepth;
+                            
+                        }
+                    } else {
+                        smallestScore = nextScore;
+                        bestAction = i;
+                        deepestDepth = nextDepth;
+                    }
+                }
+                /*
+                var nextScore = nextState.score;
+                var nextDepth = nextState.depth;
+                if(bestAction == -1 || nextScore <= smallestScore) {
+                    if(nextScore == smallestScore) {
+                        if(nextScore == -Infinity && nextDepth < deepestDepth ||
+                           nextScore != -Infinity && nextDepth < deepestDepth) {
+                                smallestScore = nextScore;
+                                bestAction = i;
+                                deepestDepth = nextDepth;
+                        }
+                    } else {
+                        smallestScore = nextScore;
+                        bestAction = i;
+                        deepestDepth = nextDepth;
+                    }
+                }
+                */
+                /*
                 var score = nextState.score;//board.getScore(2);
                 if(bestAction == -1 || score <= smallestScore) {
 
@@ -175,7 +263,7 @@ function alphabeta(state, depth, maxDepth, alpha, beta, maxplayer) {
                     	bestAction = i;
                 	}
                 }
-
+                */
 
                 // Save the smallest score found among all states in this entire branch so far
                 beta = Math.min(beta, smallestScore);
@@ -185,7 +273,7 @@ function alphabeta(state, depth, maxDepth, alpha, beta, maxplayer) {
                 * We can ignore the rest of the successor states in this branch because they will result in worse scores
                 * than if we choose one of the actions in a previous branch
                 */
-                if(beta <= alpha) {
+                if(beta <= alpha && depth != 0) {
                     return new State(bestAction, state.board, smallestScore, depth);
                 }
             }
