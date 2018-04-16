@@ -27,39 +27,47 @@
 						<button class="button button-green" id="startButton">New Game</button>
 					</div>
 					
-					<div class="card" id="settings-menu">
-						<span class="item center">
-							<h1 id="winner"></h1>
-							<img id="thinkingImage" src="images/player1Thinking.gif">
-						</span>
+					<div id="settings-menu">
+						<div class="card" id="thinking-container">
+							<!--<span class="center">-->
+								<!--<h1 id="winner"></h1>-->
+								<img id="thinkingImage" src="images/player1Thinking.gif">
+							<!--</span>-->
+						</div>
 						
 						<div class="grid grid-2-1-1">
-							<div class="settings-group">
+							<div class="card settings-group">
 								<div class="settings-group-inner">
-									<span class="item">
-										Game Speed
+									<span class="settings-item-header">Game Options</span>
+
+									<span class="settings-item">
+										<span class="settings-item-header-small">Game Speed</span>
 										<div class="gameSpeed_slider">
-											<input class="gameSpeed_range" type="range" value="1500" min="1" max="2000">
+											<input class="gameSpeed_range" type="range" value="1500" min="5" max="3000">
 										</div>
+									</span> 
+									<span class="settings-item">
+										<span class="settings-item-header-small">Rows</span>
+										<input type="number" id="numRows" value="6">
 									</span>
-									<span class="item">
-										Rows <input type="number" id="numRows" value="6">
+									<span class="settings-item">
+										<span class="settings-item-header-small">Columns</span>
+										<input type="number" id="numCols" value="7">
 									</span>
-									<span class="item">
-										Columns <input type="number" id="numCols" value="7">
-									</span>
-									<span class="item">
-										Winning Length
+									<span class="settings-item">
+										<span class="settings-item-header-small">Winning Length</span>
 										<input type="number" id="winLength" value="4">
 									</span>
 								</div>
 							</div>
 							
-							<div class="settings-group">
+							<div class="card settings-group">
 								<div class="settings-group-inner">
-									<span class="item">
-										Red Player
-										<select id="player1">
+									<span class="settings-item-header">Players</span>
+									
+									<span class="settings-item">
+										<!-- Red Player -->
+										<select class="button-red" id="player1">
 											<option value="0" selected="selected">Human</option>
 											<option value="1">AI: Level 1</option>
 											<option value="2">AI: Level 2</option>
@@ -73,9 +81,9 @@
 											<option value="10">AI: Level 10</option>
 										</select>
 									</span>
-									<span class="item">
-										Blue Player
-										<select id="player2">
+									<span class="settings-item">
+										<!-- Blue Player -->
+										<select class="button-blue" id="player2">
 											<option value="0">Human</option>
 											<option value="1">AI: Level 1</option>
 											<option value="2">AI: Level 2</option>
@@ -87,6 +95,41 @@
 											<option value="8">AI: Level 8</option>
 											<option value="9">AI: Level 9</option>
 											<option value="10">AI: Level 10</option>
+										</select>
+									</span>
+									<span class="settings-item">
+										<!-- Yellow Player -->
+										<select class="button-yellow" id="player3">
+											<option value="0">Human</option>
+											<option value="1">AI: Level 1</option>
+											<option value="2">AI: Level 2</option>
+											<option value="3">AI: Level 3</option>
+											<option value="4">AI: Level 4</option>
+											<option value="5">AI: Level 5</option>
+											<option value="6">AI: Level 6</option>
+											<option value="7">AI: Level 7</option>
+											<option value="8">AI: Level 8</option>
+											<option value="9">AI: Level 9</option>
+											<option value="10">AI: Level 10</option>
+											<option value="11" selected="selected">None</option>
+
+										</select>
+									</span>
+									<span class="settings-item">
+										<!-- Green Player -->
+										<select class="button-green" id="player4">
+											<option value="0">Human</option>
+											<option value="1">AI: Level 1</option>
+											<option value="2">AI: Level 2</option>
+											<option value="3">AI: Level 3</option>
+											<option value="4">AI: Level 4</option>
+											<option value="5">AI: Level 5</option>
+											<option value="6">AI: Level 6</option>
+											<option value="7">AI: Level 7</option>
+											<option value="8">AI: Level 8</option>
+											<option value="9">AI: Level 9</option>
+											<option value="10">AI: Level 10</option>
+											<option value="11" selected="selected">None</option>
 										</select>
 									</span>
 								</div>

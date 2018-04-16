@@ -60,8 +60,9 @@ $(function() {
 
             range.on('input', function(){
                 $(this).next(value).html(this.value + "%");
-                delayTime = 2000 - parseInt(this.value);
+                delayTime = 3000 - parseInt(this.value) + 5;
                 animationSpeed = Math.min(delayTime * 0.9, 450);
+                console.log(delayTime + " " + animationSpeed);
             });
         });
     };
@@ -285,7 +286,7 @@ function update() {
         if(game.time.now > updateTime) {
             currentState = "ready";
             updateGraphics();
-            console.log(connect4.board.getScore());
+            //console.log(connect4.board.getScore());
         } else {
             return;
         }
@@ -334,7 +335,7 @@ function getMessage(e) {
 
     // Set # of iterations
     let iterations = e.data[1];
-    console.log("iterations=" + iterations);
+    //console.log("iterations=" + iterations);
 }
 
 
