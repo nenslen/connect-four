@@ -45,6 +45,28 @@ $(function() {
         createGraphics();
         updateGraphics();
     });
+
+    var rangeSlider = function(){
+        var slider = $('.gameSpeed_slider'),
+        range = $('.gameSpeed_range'),
+        value = $('.gameSpeed_value');
+    
+        slider.each(function(){
+
+            value.each(function(){
+                var value = $(this).prev().attr('value');
+                $(this).html(value + "%");
+            });
+
+            range.on('input', function(){
+                $(this).next(value).html(this.value + "%");
+                delayTime = 2000 - parseInt(this.value);
+                animationSpeed = Math.min(delayTime * 0.9, 450);
+            });
+        });
+    };
+
+    rangeSlider();
 });
 
 

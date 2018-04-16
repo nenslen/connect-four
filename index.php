@@ -37,13 +37,19 @@
 							<div class="settings-group">
 								<div class="settings-group-inner">
 									<span class="item">
-										Rows: <input type="number" id="numRows" value="6">
+										Game Speed
+										<div class="gameSpeed_slider">
+											<input class="gameSpeed_range" type="range" value="1500" min="1" max="2000">
+										</div>
 									</span>
 									<span class="item">
-										Columns: <input type="number" id="numCols" value="7">
+										Rows <input type="number" id="numRows" value="6">
 									</span>
 									<span class="item">
-										Winning Length:
+										Columns <input type="number" id="numCols" value="7">
+									</span>
+									<span class="item">
+										Winning Length
 										<input type="number" id="winLength" value="4">
 									</span>
 								</div>
@@ -52,7 +58,7 @@
 							<div class="settings-group">
 								<div class="settings-group-inner">
 									<span class="item">
-										Red Player:
+										Red Player
 										<select id="player1">
 											<option value="0" selected="selected">Human</option>
 											<option value="1">AI: Level 1</option>
@@ -68,7 +74,7 @@
 										</select>
 									</span>
 									<span class="item">
-										Blue Player:
+										Blue Player
 										<select id="player2">
 											<option value="0">Human</option>
 											<option value="1">AI: Level 1</option>
