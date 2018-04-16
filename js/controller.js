@@ -14,7 +14,7 @@ var boardTiles = []; // The connect 4 board
 var currentColumnHover;
 var updateTime = 0;
 var delayTime = 500;
-var animationSpeed = 250;
+var animationSpeed = 450;
 var tempTile;
 var shownWinner = false;
 

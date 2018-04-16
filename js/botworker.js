@@ -71,17 +71,19 @@ function alphabeta(state, depth, maxDepth, alpha, beta, maxplayer) {
         * his piece in the 5th column. We do this for each column and only examine the successor state
         * if it is valid.
         */
-        for(var i = 0; i < state.board.columns; i++) {
+        let actions = orderActions(state.board, 1);
+        for(let i = 0; i < actions.length; i++) {
+        //for(var i = 0; i < state.board.columns; i++) {
             iterations++;
-
+            let action = actions[i];
 
             // Only check valid actions
-            if(state.board.isValidMove(i)) {
+            if(state.board.isValidMove(action)) {
                 
                 // Get resulting state from performing this action
                 var newBoard = state.board.copy();
-                newBoard.placePiece(i, 1);
-                var nextState = alphabeta(new State(i, newBoard, 0, depth + 1), depth + 1, maxDepth, alpha, beta, false);
+                newBoard.placePiece(action, 1);
+                var nextState = alphabeta(new State(action, newBoard, 0, depth + 1), depth + 1, maxDepth, alpha, beta, false);
 
 
                 /**
@@ -96,59 +98,23 @@ function alphabeta(state, depth, maxDepth, alpha, beta, maxplayer) {
                 var nextDepth = nextState.depth;
                 if(bestAction == -1) {
                     highestScore = nextScore;
-                    bestAction = i;
+                    bestAction = action;
                     deepestDepth = nextDepth;
                 } else if(nextScore >= highestScore) {
                     if(nextScore == highestScore) {
                         if(nextScore == Infinity && nextDepth <= deepestDepth || 
                            nextScore != Infinity && nextDepth > deepestDepth) {
                                 highestScore = nextScore;
-                                bestAction = i;
+                                bestAction = action;
                                 deepestDepth = nextDepth;
                             
                         }
                     } else {
                         highestScore = nextScore;
-                        bestAction = i;
+                        bestAction = action;
                         deepestDepth = nextDepth;
                     }
                 }
-                /*
-                var nextScore = nextState.score;
-                var nextDepth = nextState.depth;
-                if(bestAction == -1 || nextScore >= highestScore) {
-                    if(nextScore == highestScore) {
-                        if(nextScore == Infinity && nextDepth < deepestDepth || 
-                           nextScore != Infinity && nextDepth < deepestDepth) {
-                                highestScore = nextScore;
-                                bestAction = i;
-                                deepestDepth = nextDepth;
-                            
-                        }
-                    } else {
-                        highestScore = nextScore;
-                        bestAction = i;
-                        deepestDepth = nextDepth;
-                    }
-                }
-                */
-                /*
-                var score = nextState.score;//board.getScore(1);
-                if(bestAction == -1 || score >= highestScore) {
-
-                	// Break ties by choosing the deeper state
-                	if(score == highestScore) {
-                		if(nextState.depth > deepestDepth) {
-                			highestScore = score;
-                			bestAction = i;
-                			deepestDepth = nextState.depth;
-                		}
-                	} else {
-                		highestScore = score;
-                    	bestAction = i;
-                	}
-                }
-                */
 
                 // Save the largest score found among all states in this entire branch so far
                 alpha = Math.max(alpha, highestScore);
@@ -158,7 +124,7 @@ function alphabeta(state, depth, maxDepth, alpha, beta, maxplayer) {
                 * We can ignore the rest of the successor states in this branch because they will result in worse scores
                 * than if we choose one of the actions in a previous branch
                 */
-                if(beta <= alpha && depth != 0) {
+                if(beta <= alpha) {
                     return new State(bestAction, state.board, highestScore, depth);
                 }
             }
@@ -187,17 +153,20 @@ function alphabeta(state, depth, maxDepth, alpha, beta, maxplayer) {
         * his piece in the 5th column. We do this for each column and only examine the successor state
         * if it is valid.
         */
-        for(var i = 0; i < state.board.columns; i++) {
+        let actions = orderActions(state.board, 2);
+        for(let i = 0; i < actions.length; i++) {
+        //for(var i = 0; i < state.board.columns; i++) {
             iterations++;
 
+            let action = actions[i];
 
             // Only check valid actions
-            if(state.board.isValidMove(i)) {
+            if(state.board.isValidMove(action)) {
                 
                 // Get resulting state from performing this action
                 var newBoard = state.board.copy();
-                newBoard.placePiece(i, 2);
-                var nextState = alphabeta(new State(i, newBoard, 0, depth + 1), depth + 1, maxDepth, alpha, beta, true);
+                newBoard.placePiece(action, 2);
+                var nextState = alphabeta(new State(action, newBoard, 0, depth + 1), depth + 1, maxDepth, alpha, beta, true);
 
 
                 /**
@@ -212,58 +181,23 @@ function alphabeta(state, depth, maxDepth, alpha, beta, maxplayer) {
                 var nextDepth = nextState.depth;
                 if(bestAction == -1) {
                     smallestScore = nextScore;
-                    bestAction = i;
+                    bestAction = action;
                     deepestDepth = nextDepth;
                 } else if(nextScore <= smallestScore) {
                     if(nextScore == smallestScore) {
                         if(nextScore == -Infinity && nextDepth <= deepestDepth || 
                            nextScore != -Infinity && nextDepth > deepestDepth) {
                                 smallestScore = nextScore;
-                                bestAction = i;
+                                bestAction = action;
                                 deepestDepth = nextDepth;
                             
                         }
                     } else {
                         smallestScore = nextScore;
-                        bestAction = i;
+                        bestAction = action;
                         deepestDepth = nextDepth;
                     }
                 }
-                /*
-                var nextScore = nextState.score;
-                var nextDepth = nextState.depth;
-                if(bestAction == -1 || nextScore <= smallestScore) {
-                    if(nextScore == smallestScore) {
-                        if(nextScore == -Infinity && nextDepth < deepestDepth ||
-                           nextScore != -Infinity && nextDepth < deepestDepth) {
-                                smallestScore = nextScore;
-                                bestAction = i;
-                                deepestDepth = nextDepth;
-                        }
-                    } else {
-                        smallestScore = nextScore;
-                        bestAction = i;
-                        deepestDepth = nextDepth;
-                    }
-                }
-                */
-                /*
-                var score = nextState.score;//board.getScore(2);
-                if(bestAction == -1 || score <= smallestScore) {
-
-                	// Break ties by choosing the deeper state
-                	if(score == smallestScore) {
-                		if(nextState.depth > deepestDepth) {
-                			smallestScore = score;
-                			bestAction = i;
-                			deepestDepth = nextState.depth;
-                		}
-                	} else {
-                		smallestScore = score;
-                    	bestAction = i;
-                	}
-                }
-                */
 
                 // Save the smallest score found among all states in this entire branch so far
                 beta = Math.min(beta, smallestScore);
@@ -273,7 +207,7 @@ function alphabeta(state, depth, maxDepth, alpha, beta, maxplayer) {
                 * We can ignore the rest of the successor states in this branch because they will result in worse scores
                 * than if we choose one of the actions in a previous branch
                 */
-                if(beta <= alpha && depth != 0) {
+                if(beta <= alpha) {
                     return new State(bestAction, state.board, smallestScore, depth);
                 }
             }
@@ -282,6 +216,60 @@ function alphabeta(state, depth, maxDepth, alpha, beta, maxplayer) {
         return new State(bestAction, state.board, smallestScore, depth);
     }
 };
+
+
+/**
+* Returns an ordered list of the possible actions in a given state. Order is based on the board score. The moves are ordered
+* from best to worst, so moves[0] will be the best move, moves[1] will be the second best, etc.
+* @param board: The board to check for moves on
+* @return: An array of moves, ordered from best to worst. An empty array means no moves were possible
+*/
+function orderActions(board, player) {
+
+    let states = [];
+
+    // Get each resulting state
+    for(let i = 0; i < board.columns; i++) {
+
+        // Perform the action if possible
+        if(board.isValidMove(i)) {
+            var newBoard = board.copy();
+            newBoard.placePiece(i, player);
+            states.push(new State(i, newBoard, newBoard.getScore(), 0));
+        }
+    }
+
+    
+    // Sort states on score and return a list of actions
+    states = states.sort(compareStates);
+    let orderedActions = [];
+    
+    for(let i = 0; i < states.length; i++) {
+        orderedActions.push(states[i].action);
+    }
+
+    let result = (player == 1) ? orderedActions : orderedActions.reverse();
+    return result;
+}
+
+
+/**
+* Compares the scores of 2 states. Used for sorting an array of states based on their score.
+* @param state1: The first State
+* @param state2: The second State
+* @return: 1, -1, or 0 to indicate the sort order
+*/
+function compareStates(state1, state2) {
+    if(state1.score > state2.score) {
+        return -1;
+    }
+
+    if(state1.score < state2.score) {
+        return 1;
+    }
+
+    return 0;
+}
 
 
 function State(action, board, score, depth) {
