@@ -82,13 +82,6 @@ function alphabeta(state, depth, maxDepth, alpha, beta, maxplayer) {
             
             
             // Get resulting state from performing this action
-            /*
-            let action = actions[i].action;
-            var newBoard = state.board.copy();
-            newBoard.placePiece(action, 1);
-            var nextState = alphabeta(new State(action, newBoard, 0, depth + 1), depth + 1, maxDepth, alpha, beta, false);
-            */
-            
             let action = actions[i].action;
             globalBoard.placePiece(action, 1);
             var nextState = alphabeta(new State(action, 0, depth + 1), depth + 1, maxDepth, alpha, beta, false);
@@ -172,13 +165,6 @@ function alphabeta(state, depth, maxDepth, alpha, beta, maxplayer) {
 
 
             // Get resulting state from performing this action
-            /*
-            let action = actions[i].action;
-            var newBoard = state.board.copy();
-            newBoard.placePiece(action, 2);
-            var nextState = alphabeta(new State(action, newBoard, 0, depth + 1), depth + 1, maxDepth, alpha, beta, true);
-            */
-            
             let action = actions[i].action;
             globalBoard.placePiece(action, 2);
             var nextState = alphabeta(new State(action, 0, depth + 1), depth + 1, maxDepth, alpha, beta, true);
