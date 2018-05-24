@@ -30,7 +30,7 @@
 					<div id="settings-menu">
 						<div class="card" id="thinking-container">
 							<!--<span class="center">-->
-								<!--<h1 id="winner"></h1>-->
+								<h1 id="winner"></h1>
 								<img id="thinkingImage" src="images/player1Thinking.gif">
 							<!--</span>-->
 						</div>
@@ -43,7 +43,7 @@
 									<span class="settings-item">
 										<span class="settings-item-header-small">Game Speed</span>
 										<div class="gameSpeed_slider">
-											<input class="gameSpeed_range" type="range" value="1500" min="5" max="3000">
+											<input class="gameSpeed_range" type="range" value="1500" min="5" max="2000">
 										</div>
 									</span> 
 									<span class="settings-item">
@@ -97,8 +97,9 @@
 											<option value="10">AI: Level 10</option>
 										</select>
 									</span>
+									<!--
 									<span class="settings-item">
-										<!-- Yellow Player -->
+										<!-- Yellow Player --
 										<select class="button-yellow" id="player3">
 											<option value="0">Human</option>
 											<option value="1">AI: Level 1</option>
@@ -116,7 +117,7 @@
 										</select>
 									</span>
 									<span class="settings-item">
-										<!-- Green Player -->
+										<!-- Green Player --
 										<select class="button-green" id="player4">
 											<option value="0">Human</option>
 											<option value="1">AI: Level 1</option>
@@ -132,6 +133,7 @@
 											<option value="11" selected="selected">None</option>
 										</select>
 									</span>
+								-->
 								</div>
 							</div>
 						</div>
