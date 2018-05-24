@@ -60,7 +60,7 @@ $(function() {
 
             range.on('input', function(){
                 $(this).next(value).html(this.value + "%");
-                delayTime = 3000 - parseInt(this.value) + 5;
+                delayTime = 2000 - parseInt(this.value) + 5;
                 animationSpeed = Math.min(delayTime * 0.9, 450);
                 console.log(delayTime + " " + animationSpeed);
             });
@@ -108,6 +108,7 @@ function create() {
     game.scale.setGameSize(gameWidth, gameHeight);
     game.stage.backgroundColor = "#2d2d2d";
     $('#winner').hide();
+    $('#thinkingImage').show();
     currentColumnHover = 0;
     setGameScale();
     createGraphics();
@@ -448,6 +449,7 @@ function showWinner() {
         $('#winner').text(winText);
         $('#winner').css("color", color);
         $('#winner').show();
+        $('#thinkingImage').hide();
 
         // Highlight winning tiles
         if(winner != Winner.TIE) {
